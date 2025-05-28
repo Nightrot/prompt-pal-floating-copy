@@ -1,5 +1,5 @@
-
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { X, Save, Tag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -16,6 +16,7 @@ interface AddPromptFormProps {
 }
 
 export const AddPromptForm: React.FC<AddPromptFormProps> = ({ isVisible, onClose }) => {
+  const navigate = useNavigate();
   const { categories, addPrompt } = usePrompts();
   const [formData, setFormData] = useState({
     title: '',
@@ -55,6 +56,11 @@ export const AddPromptForm: React.FC<AddPromptFormProps> = ({ isVisible, onClose
       toast.success('Prompt ajouté avec succès !');
       setFormData({ title: '', content: '', category: '', tags: [] });
       onClose();
+      
+      // Redirect to home page if we're on the dedicated add prompt page
+      if (window.location.pathname === '/add-prompt') {
+        navigate('/');
+      }
     } catch (error) {
       toast.error('Erreur lors de l\'ajout du prompt');
     }
