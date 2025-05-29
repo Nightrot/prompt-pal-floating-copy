@@ -2,7 +2,7 @@
 import { CapacitorConfig } from '@capacitor/core';
 
 const config: CapacitorConfig = {
-  appId: 'app.lovable.32c102544007498a83eeea0683bd810b',
+  appId: 'app.lovable.zzc102544007498a83eeea0683bd810b',
   appName: 'PromptVault',
   webDir: 'dist',
   server: {
